@@ -25,6 +25,7 @@ public class SimpleAccountView extends JFrameView {
 	public int index = 0;
 	public static ArrayList<User> users = new ArrayList<User>(); 
 	
+	//Constructor that initializes window along with buttons and listeners
 	public SimpleAccountView(SimpleAccountModel model, SimpleAccountController controller) {
 		super(model, controller);
 		jcb = new JComboBox<>();
@@ -36,7 +37,7 @@ public class SimpleAccountView extends JFrameView {
 		this.setPreferredSize(new Dimension(500, 300));
 		this.setVisible(true);
 		this.setAlwaysOnTop( true );
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//sets so program terminates when window is closed
 		
 		JPanel buttonPanel = new JPanel();
 		Handler handler = new Handler();
@@ -65,13 +66,13 @@ public class SimpleAccountView extends JFrameView {
 		pack();
 	}
 
-	public void modelChanged(ModelEvent event) {
+	public void modelChanged(ModelEvent event) {			//function to update model
 		users.get(index).setBalance(event.getAmount());
 	}
 
 	public class Handler implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if(e.getSource() == jcb)
+			if(e.getSource() == jcb)			//when a selection is made, updates index of user selected
 			{
 				index = jcb.getSelectedIndex();
 			}
@@ -86,17 +87,17 @@ public class SimpleAccountView extends JFrameView {
 						   "Please ensure the file is in the input folder.\n" +
 						   "Enter the name of the file with extension.\n" +
 						   "> ");
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);	//Scanner to request file name for data entry and saving
 		fileName = sc.nextLine();
 		try
 		{
 			BufferedReader br = new BufferedReader(new FileReader("./input/" + fileName));
-			String name;
+			String name;			//imports users from file to ArrayList users
 			int accountNumber;
 			double balance;
 			try
 			{
-				while((name = br.readLine()) != null)
+				while((name = br.readLine()) != null)	//iterates until end of file
 				{
 					accountNumber = Integer.parseInt(br.readLine());
 					balance = Double.parseDouble(br.readLine());
@@ -118,6 +119,6 @@ public class SimpleAccountView extends JFrameView {
 		{
 			System.err.println("Cannot open given file: " + e);
 		}
-		sc.close();
+		sc.close();	//close scanner
 	}
 }

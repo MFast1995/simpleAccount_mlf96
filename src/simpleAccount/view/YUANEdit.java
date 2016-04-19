@@ -14,6 +14,7 @@ import simpleAccount.model.ModelEvent;
 import simpleAccount.model.SimpleAccountModel;
 import simpleAccount.model.User;
 
+//class for window for editing in YUAN
 public class YUANEdit extends JFrameView {
 	DecimalFormat df = new DecimalFormat("########.00");
 	public static final String DISMISS = "Dismiss";
@@ -29,7 +30,6 @@ public class YUANEdit extends JFrameView {
 		this.user = user;
 		this.setTitle(user.getID() + " " + user.getName() + " {YUAN}");
 		this.setPreferredSize(new Dimension(500,150));
-		this.getContentPane();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
@@ -37,7 +37,7 @@ public class YUANEdit extends JFrameView {
 		NumberFormat format = NumberFormat.getNumberInstance();
 		format.setMinimumFractionDigits(2);
 		format.setMaximumFractionDigits(2);
-		format.setRoundingMode(RoundingMode.DOWN);
+		format.setRoundingMode(RoundingMode.DOWN); //removes extra digits after first two decimal points
 		amountField = new JFormattedTextField(format);
 		amountField.setValue(0.00);
 		amountField.setColumns(30);
