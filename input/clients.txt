@@ -1,6 +1,6 @@
 Malapa Bushra
 123456
-494.65
+506.65
 
 Peter Benjamin
 987652
@@ -12,5 +12,5 @@ Goday Priya
 
 John Smith
 444451
-3000.00
+3009.82
 
